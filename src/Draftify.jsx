@@ -3,7 +3,7 @@ import EditBlock from "./components/EditBlock";
 import Options from "./components/Options";
 import OutputBlock from "./components/OutputBlock";
 
-export default function Editor() {
+export default function Draftify() {
   const [blocksData, setBlocksData] = useState([
     { id: 1, type: "heading", content: "" },
   ]);

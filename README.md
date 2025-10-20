@@ -1,16 +1,86 @@
-# React + Vite
+🖋️ Draftify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Write. Create. Build your story block by block.
 
-Currently, two official plugins are available:
+🪶 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Draftify is a minimal, modular block editor built for creators and developers who love control.
+It lets you compose beautiful pages using flexible content blocks — headings, paragraphs, images, quotes, tables, lists, and even code — all rendered in real-time as you write.
 
-## React Compiler
+Think of it as your creative sandbox where structure meets freedom.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+✨ Key Features
 
-## Expanding the ESLint configuration
+🧩 Dynamic Blocks — Add and edit text, images, tables, quotes, code, and more.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+⚡ Instant Output Preview — See your content render live as you build.
+
+🎞️ Drag & Drop Media Uploads — Drop files directly into the editor.
+
+🪄 Table Editor Support — Create tables inline with editable headers and cells.
+
+💾 Reactive State — Updates content in real-time across editor and output.
+
+🎨 Clean, Customizable UI — Built with TailwindCSS for a modern minimal look.
+
+🔧 Extensible Architecture — Add new block types or behaviors easily.
+
+🧠 Tech Stack
+
+React (Vite) — Lightning-fast, modular setup
+
+Tailwind CSS — Responsive and easy-to-tweak styling
+
+FontAwesome — Sleek icons for block controls
+
+Custom Hooks — Manage tables, images, and media interactions
+
+🚀 Getting Started
+
+# Clone the repository
+
+git clone https://github.com/<your-username>/draftify.git
+
+# Navigate into the project
+
+cd draftify
+
+# Install dependencies
+
+npm install
+
+# Run the dev server
+
+npm run dev
+
+Then open http://localhost:5173
+and start drafting ✍️
+
+🧭 How It Works
+
+Choose a block → Click on a block icon (Heading, Paragraph, Image, etc.)
+
+Edit instantly → Type or drop media right inside the editor.
+
+Watch it live → See how your content looks in real time in the output preview.
+
+🌱 Coming Soon
+
+Text formatting (bold, italic, underline)
+
+Block reordering via drag-and-drop
+
+JSON export/import (save and reload drafts)
+
+Media upload to Firebase / Cloudinary
+
+Keyboard shortcuts for faster editing
+
+Dark / Light mode toggle
+
+🧑‍🎨 Author
+
+Bernard Kuria
+Mechatronics Engineer • Developer • Creator of E-NEXUS, DigiSign, and Draftify
+📍 Nyeri, Kenya
+🌐 [Your Portfolio Link Here]
