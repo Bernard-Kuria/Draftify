@@ -39,7 +39,7 @@ Custom Hooks — Manage tables, images, and media interactions
 
 # Clone the repository
 
-git clone https://github.com/<your-username>/draftify.git
+git clone https://github.com/Bernard-Kuria/draftify.git
 
 # Navigate into the project
 
@@ -83,4 +83,4 @@ Dark / Light mode toggle
 Bernard Kuria
 Mechatronics Engineer • Developer • Creator of E-NEXUS, DigiSign, and Draftify
 📍 Nyeri, Kenya
-🌐 [Your Portfolio Link Here]
+🌐 https://bernard-webfolio.web.app
