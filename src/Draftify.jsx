@@ -11,9 +11,12 @@ import "./utils/icons";
 import "./Draftify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Grabber from "./DrafityComponents/Grabber";
+import BackGround from "./DrafityComponents/Background";
+import { useGenerateGrid } from "./utils/DraftifyHooks/BackgroundHooks/backGroundEffects";
 
 export default function Draftify() {
   const [view, setView] = useState("editor");
+  const [gridDots, setGridDots] = useState([]);
 
   const {
     blocksData,
@@ -32,9 +35,12 @@ export default function Draftify() {
     whileHover,
   } = useDraftify([]);
 
+  useGenerateGrid(setGridDots);
+
   return (
-    <div className="p-[10px] md:flex flex-col justify-center items-center min-h-[100vh] md:mt-[20px]">
-      <div className="flex flex-col md:gap-[10px] gap-[20px] w-full md:w-[90%] min-h-[100vh] md:min-h-[400px] h-fit md:border border-(--theme-color) rounded-2xl md:p-5">
+    <div className="box-border p-[10px] md:flex flex-col justify-center items-center min-h-full md:mt-[20px] overflow-hidden">
+      <BackGround gridDots={gridDots} />
+      <div className="flex flex-col md:gap-[10px] gap-[20px] w-full md:w-[90%] min-h-[calc(100vh-100px)] h-fit md:border border-(--theme-color) rounded-2xl md:p-5 bg-white">
         <ToolBar view={view} setView={setView} blocksData={blocksData} />
 
         {view === "editor" && (
@@ -89,7 +95,7 @@ export default function Draftify() {
 
         {view === "preview" && (
           <div
-            className="grid gap-[10px] border border-(--theme-color) rounded-2xl p-3 md:p-5 bg-white"
+            className="grid gap-[10px] border border-(--theme-color) rounded-2xl p-3 md:p-5"
             onSubmit={(e) => e.preventDefault()}
           >
             <OutputBlock blocksData={blocksData} />
