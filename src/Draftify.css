@@ -14,7 +14,7 @@
 }
 
 .paragraph {
-  @apply w-full h-fit field-sizing-content outline-none;
+  @apply w-full h-fit outline-none;
 }
 
 .quote {
