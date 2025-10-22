@@ -8,3 +8,31 @@
 .logo-text {
   @apply bg-gradient-to-br from-blue-800 to-purple-500 bg-clip-text text-transparent;
 }
+
+.heading {
+  @apply w-full outline-none text-2xl font-semibold;
+}
+
+.paragraph {
+  @apply w-full h-fit field-sizing-content outline-none;
+}
+
+.quote {
+  @apply w-full border-l-4 outline-none text-[18px] italic pl-2;
+}
+
+.list {
+  @apply outline-none text-sm;
+}
+
+.link {
+  @apply text-(--hovered-theme-color) w-full outline-none text-sm;
+}
+
+.code {
+  @apply font-mono bg-black text-white p-2 w-full whitespace-pre-wrap;
+}
+
+.media {
+  @apply object-cover w-full h-full;
+}

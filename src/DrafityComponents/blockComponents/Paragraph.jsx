@@ -1,7 +1,7 @@
 export default function ParagraphEditor({ block, onChange }) {
   return (
     <textarea
-      className="text-[18px] font-semibold w-full border-b outline-none"
+      className="border-b paragraph"
       placeholder="Write something..."
       value={block.content}
       onChange={(e) => onChange(block.id, e.target.value)}
@@ -11,7 +11,7 @@ export default function ParagraphEditor({ block, onChange }) {
 
 export function ParagraphOutput({ block }) {
   return (
-    <p key={block.id} className="w-full outline-none">
+    <p key={block.id} className="paragraph">
       {block.content}
     </p>
   );

@@ -3,7 +3,7 @@ export default function LinkEditor({ block, onChange }) {
     <input
       type="text"
       placeholder="Enter link..."
-      className="border-b w-full outline-none"
+      className="border-b link"
       value={block.content}
       onChange={(e) => onChange(block.id, e.target.value)}
     />
@@ -12,11 +12,7 @@ export default function LinkEditor({ block, onChange }) {
 
 export function LinkOutput({ block }) {
   return (
-    <a
-      key={block.id}
-      href={block.url}
-      className="text-(--hovered-theme-color) w-full outline-none text-sm"
-    >
+    <a key={block.id} href={block.url} className="link">
       {block.content}
     </a>
   );

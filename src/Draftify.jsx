@@ -34,14 +34,14 @@ export default function Draftify() {
 
   return (
     <div className="p-[10px] md:flex flex-col justify-center items-center min-h-[100vh] md:mt-[20px]">
-      <div className="flex flex-col md:gap-[10px] gap-[20px] w-full md:w-[90%] min-h-[400px] h-fit md:border border-(--theme-color) rounded-2xl md:p-5">
+      <div className="flex flex-col md:gap-[10px] gap-[20px] w-full md:w-[90%] min-h-[100vh] md:min-h-[400px] h-fit md:border border-(--theme-color) rounded-2xl md:p-5">
         <ToolBar view={view} setView={setView} blocksData={blocksData} />
 
         {view === "editor" && (
           <>
             <Options handleClick={handleClick} />
             <div
-              className="flex-1 border border-(--theme-color) rounded-2xl md:p-5"
+              className="flex-1 border border-(--theme-color) rounded-2xl md:p-5 p-[10px_0]"
               onSubmit={(e) => e.preventDefault()}
             >
               <motion.div
@@ -89,7 +89,7 @@ export default function Draftify() {
 
         {view === "preview" && (
           <div
-            className="grid gap-[10px] border border-(--theme-color) rounded-2xl p-5"
+            className="flex-1 grid gap-[10px] border border-(--theme-color) rounded-2xl p-3 md:p-5 bg-white"
             onSubmit={(e) => e.preventDefault()}
           >
             <OutputBlock blocksData={blocksData} />

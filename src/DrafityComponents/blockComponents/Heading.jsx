@@ -2,7 +2,7 @@ export default function HeadingEditor({ block, onChange }) {
   return (
     <input
       type="text"
-      className="w-full border-b outline-none"
+      className="border-b heading"
       placeholder="Heading..."
       value={block.content}
       onChange={(e) => onChange(block.id, e.target.value)}
@@ -12,7 +12,7 @@ export default function HeadingEditor({ block, onChange }) {
 
 export function HeadingOutput({ block }) {
   return (
-    <h2 key={block.id} className="w-full outline-none text-2xl font-semibold">
+    <h2 key={block.id} className="heading">
       {block.content}
     </h2>
   );

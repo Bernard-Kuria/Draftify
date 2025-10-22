@@ -18,7 +18,7 @@ export default function Options({ handleClick }) {
   const [activeId, setActiveId] = useState(null);
 
   return (
-    <div className="flex flex-wrap gap-[10px] items-center">
+    <div className="flex flex-wrap gap-[5px] md:gap-[10px] items-center">
       {blocks.map((block) => (
         <div
           key={block.id}

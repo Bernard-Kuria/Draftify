@@ -8,10 +8,12 @@ export default function ToolBar({ view, setView, blocksData }) {
   const themeModeToggle = useRef(null);
   return (
     <div className="md:h-[40px]">
-      <div className="relative md:flex items-center text-[12px] italic gap-[10px]">
-        <div className="font-bold logo-text text-[20px]">DRAFTIFY</div>
-        <div className="underline logo-text">
-          Write. Create. Build your story block by block.
+      <div className="relative grid md:flex items-center text-[12px] italic gap-[10px]">
+        <div className="font-bold logo-text text-[20px]">
+          DRAFTIFY{" "}
+          <span className="underline font-normal logo-text text-[12px]">
+            Write. Create. Build your story block by block.
+          </span>
         </div>
         <div className="md:absolute right-0 flex items-center gap-[10px]">
           <button

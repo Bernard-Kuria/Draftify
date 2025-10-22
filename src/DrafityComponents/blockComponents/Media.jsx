@@ -27,50 +27,35 @@ export default function MediaEditor({ block, onChange }) {
   const fileType = fileName.split(".").pop();
 
   return (
-    <div className="border h-[250px]">
+    <div className="border w-full h-[250px]">
       {file ? (
         fileType === "png" ||
         fileType === "jpg" ||
         fileType === "jpeg" ||
         fileType === "gif" ? (
-          <div className="w-full h-[250px] flex gap-[10px] text-blue-600 font-medium border-blue-200">
-            <img src={file} alt="" className="object-cover w-full h-full" />
-            <div className="h-fit border border-dashed cursor-pointer">
-              <FontAwesomeIcon
-                icon={["fas", "xmark"]}
-                onClick={() => {
-                  setFile("");
-                  setFileName("");
-                }}
-              />
-            </div>
+          // Images
+          <div className="w-full h-[250px] flex text-blue-600 font-medium border-blue-200">
+            <img src={file} alt="" className="media" />
+            <RefreshBbutton setFile={setFile} setFileName={setFileName} />
           </div>
         ) : fileType === "mp4" || fileType === "webm" || fileType === "ogg" ? (
-          <div className="w-full h-[250px] flex gap-[10px] text-blue-600 font-medium border-b border-dashed border-blue-200">
-            <video
-              autoPlay
-              muted
-              controls
-              className="object-cover w-full h-full"
-            >
+          // Videos
+          <div className="w-full h-[250px] flex text-blue-600 font-medium border-blue-200">
+            <video autoPlay muted controls className="media">
               <source src={file} type="video/mp4" />
             </video>
-            <div className="h-fit border border-dashed cursor-pointer">
-              <FontAwesomeIcon
-                icon={["fas", "xmark"]}
-                onClick={() => {
-                  setFile("");
-                  setFileName("");
-                }}
-              />
-            </div>
+            <RefreshBbutton setFile={setFile} setFileName={setFileName} />
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-full gap-4 p-4 text-gray-500">
+          // Unaccepted formats
+          <div className="flex flex-col items-center justify-center h-full gap-4 p-4 text-gray-500 text-center">
             <FontAwesomeIcon icon={["fas", "file"]} size="2x" />
-            <p className="text-sm font-medium">{fileName}</p>
+            <p className="text-sm font-medium">wrong format: {fileName}</p>
+            <p className="text-sm font-medium">
+              accepted formats: png, jpg, jpeg, gif, mp4, webm,ogg
+            </p>
             <FontAwesomeIcon
-              icon={["fas", "xmark"]}
+              icon={["fas", "refresh"]}
               onClick={() => {
                 setFile("");
                 setFileName("");
@@ -79,6 +64,7 @@ export default function MediaEditor({ block, onChange }) {
           </div>
         )
       ) : (
+        // File upload section
         <div
           ref={output}
           onDrop={(e) => dropHandler(e, setFile, setFileName)}
@@ -119,20 +105,31 @@ export default function MediaEditor({ block, onChange }) {
   );
 }
 
+function RefreshBbutton({ setFile, setFileName }) {
+  return (
+    <div className="h-fit border border-dashed cursor-pointer">
+      <FontAwesomeIcon
+        icon={["fas", "refresh"]}
+        onClick={() => {
+          setFile("");
+          setFileName("");
+        }}
+      />
+    </div>
+  );
+}
+
 export function ImageOutput({ block }) {
   return (
-    <div key={block.id} className="border p-2 text-gray-500 text-center">
-      <img src={block.content} alt="" />
+    <div key={block.id} className="border p-2">
+      <img src={block.content} alt="" className="media" />
     </div>
   );
 }
 
 export function MediaOutput({ block }) {
   return (
-    <div
-      key={block.id}
-      className="border p-2 text-gray-500 text-center object-cover w-full h-full"
-    >
+    <div key={block.id} className="border p-2 media">
       {block.content && (
         <video autoPlay muted controls>
           <source src={block.content} type="video/mp4" />
