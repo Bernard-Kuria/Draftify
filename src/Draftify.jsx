@@ -1,17 +1,18 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { useDraftify } from "./utils/useDraftify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import EditBlock from "./DrafityComponents/EditBlock";
-import Options from "./DrafityComponents/Options";
-import OutputBlock from "./DrafityComponents/OutputBlock";
-import ToolBar from "./DrafityComponents/ToolBar";
+import EditBlock from "./DraftifyProComponents/EditBlock";
+import Options from "./DraftifyProComponents/Options";
+import OutputBlock from "./DraftifyProComponents/OutputBlock";
+import ToolBar from "./DraftifyProComponents/ToolBar";
+import Grabber from "./DraftifyProComponents/Grabber";
+import BackGround from "./DraftifyProComponents/Background";
 
 import "./utils/icons";
 import "./Draftify.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Grabber from "./DrafityComponents/Grabber";
-import BackGround from "./DrafityComponents/Background";
+
+import { useDraftify } from "./utils/useDraftify";
 import { useGenerateGrid } from "./utils/DraftifyHooks/BackgroundHooks/backGroundEffects";
 
 export default function Draftify() {
@@ -40,7 +41,7 @@ export default function Draftify() {
   return (
     <div className="box-border p-[5px] md:p-[10px] flex flex-col justify-center items-center min-h-screen pt-[20px] overflow-hidden">
       <BackGround gridDots={gridDots} />
-      <div className="flex flex-col md:gap-[10px] gap-[20px] w-full md:w-[90%] min-h-[400px] h-fit border border-(--theme-color) rounded-2xl p-2 md:p-5 bg-white">
+      <div className="flex flex-col md:gap-[10px] gap-[20px] w-full md:w-[90%] min-h-[450px] h-fit border border-(--theme-color) rounded-2xl p-2 md:p-5 bg-white">
         <ToolBar view={view} setView={setView} blocksData={blocksData} />
 
         {view === "editor" && (
