@@ -41,7 +41,7 @@ export default function Draftify() {
           <>
             <Options handleClick={handleClick} />
             <div
-              className="flex-1 border border-(--theme-color) rounded-2xl p-5"
+              className="flex-1 border border-(--theme-color) rounded-2xl md:p-5"
               onSubmit={(e) => e.preventDefault()}
             >
               <motion.div
