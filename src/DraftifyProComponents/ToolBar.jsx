@@ -9,11 +9,11 @@ export default function ToolBar({ view, setView, blocksData }) {
   return (
     <div className="md:h-[40px]">
       <div className="relative grid md:flex items-center text-[12px] italic gap-[10px]">
-        <div className="font-bold logo-text text-[20px]">
-          DRAFTIFY{" "}
-          <span className="underline font-normal logo-text text-[12px]">
+        <div className="md:flex gap-[10px] items-center font-bold logo-text text-[20px]">
+          DRAFTIFY PRO{" "}
+          <div className="underline font-normal text-[12px]">
             Write. Create. Build your story block by block.
-          </span>
+          </div>
         </div>
         <div className="md:absolute right-0 flex items-center gap-[10px]">
           <button
