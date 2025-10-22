@@ -14,7 +14,7 @@ export function QuoteOutput({ block }) {
   return (
     <blockquote
       key={block.id}
-      className="w-full border-l-4 outline-none text-[18px] font-semibold italic pl-2"
+      className="w-full border-l-4 outline-none text-[18px] italic pl-2"
     >
       {block.content}
     </blockquote>

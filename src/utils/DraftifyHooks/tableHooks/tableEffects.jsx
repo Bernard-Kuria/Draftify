@@ -33,7 +33,6 @@ export function renderTable(block, onTableChange) {
 
               const updatedTable = { ...tableContent, body: updatedBody };
 
-              // Tell parent to update this block only
               onTableChange(block.id, updatedTable);
             }}
           />

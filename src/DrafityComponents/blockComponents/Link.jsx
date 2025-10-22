@@ -15,7 +15,7 @@ export function LinkOutput({ block }) {
     <a
       key={block.id}
       href={block.url}
-      className="text-blue-500border-b w-full outline-none"
+      className="text-(--hovered-theme-color) w-full outline-none text-sm"
     >
       {block.content}
     </a>

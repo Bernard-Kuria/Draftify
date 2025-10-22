@@ -3,7 +3,6 @@ import ParagraphEditor from "./blockComponents/Paragraph.jsx";
 import ListEditor from "./blockComponents/List.jsx";
 import QuoteEditor from "./blockComponents/Quote.jsx";
 import TableEditor from "./blockComponents/Table.jsx";
-import ImageEditor from "./blockComponents/Image.jsx";
 import MediaEditor from "./blockComponents/Media.jsx";
 import LinkEditor from "./blockComponents/Link.jsx";
 import CodeEditor from "./blockComponents/Code.jsx";
@@ -21,7 +20,7 @@ export default function EditBlock({ block, onChange, onTableChange }) {
     case "table":
       return <TableEditor block={block} onTableChange={onTableChange} />;
     case "image":
-      return <ImageEditor block={block} onChange={onChange} />;
+      return <MediaEditor block={block} onChange={onChange} />;
     case "media":
       return <MediaEditor block={block} onChange={onChange} />;
     case "link":

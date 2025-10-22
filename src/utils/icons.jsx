@@ -12,6 +12,8 @@ import {
   faAngleDown,
   faXmark,
   faArrowUpFromBracket,
+  faTrash,
+  faDownload,
 } from "@fortawesome/free-solid-svg-icons";
 import { faImage } from "@fortawesome/free-regular-svg-icons";
 
@@ -27,5 +29,7 @@ library.add(
   faPlay,
   faAngleDown,
   faXmark,
-  faArrowUpFromBracket
+  faArrowUpFromBracket,
+  faTrash,
+  faDownload
 );

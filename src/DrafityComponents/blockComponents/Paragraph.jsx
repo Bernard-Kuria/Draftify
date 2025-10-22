@@ -11,7 +11,7 @@ export default function ParagraphEditor({ block, onChange }) {
 
 export function ParagraphOutput({ block }) {
   return (
-    <p key={block.id} className="text-[18px] font-semibold w-full outline-none">
+    <p key={block.id} className="w-full outline-none">
       {block.content}
     </p>
   );

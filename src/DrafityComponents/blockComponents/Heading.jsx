@@ -12,7 +12,7 @@ export default function HeadingEditor({ block, onChange }) {
 
 export function HeadingOutput({ block }) {
   return (
-    <h2 key={block.id} className="w-full outline-none">
+    <h2 key={block.id} className="w-full outline-none text-2xl font-semibold">
       {block.content}
     </h2>
   );

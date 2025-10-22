@@ -3,7 +3,7 @@ import { ParagraphOutput } from "./blockComponents/Paragraph";
 import { QuoteOutput } from "./blockComponents/Quote";
 import { ListOutput } from "./blockComponents/List";
 import { TableOutput } from "./blockComponents/Table";
-import { ImageOutput } from "./blockComponents/Image";
+import { ImageOutput } from "./blockComponents/Media";
 import { MediaOutput } from "./blockComponents/Media";
 import { LinkOutput } from "./blockComponents/Link";
 import { CodeOutput } from "./blockComponents/Code";

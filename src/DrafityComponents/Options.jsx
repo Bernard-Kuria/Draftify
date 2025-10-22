@@ -18,12 +18,12 @@ export default function Options({ handleClick }) {
   const [activeId, setActiveId] = useState(null);
 
   return (
-    <div className="flex gap-[10px] items-center">
+    <div className="flex flex-wrap gap-[10px] items-center">
       {blocks.map((block) => (
         <div
           key={block.id}
-          className={`flex items-center gap-[10px] min-fit h-[40px] p-2 border-2 border-gray-600 cursor-pointer ${
-            activeId === block.id ? "text-blue-500" : "text-gray-600"
+          className={`flex items-center gap-[10px] h-[40px] p-2 border-2 border-gray-600 cursor-pointer rounded-[10px] text-sm md:text-md ${
+            activeId === block.id ? "text-(--theme-color)" : "text-gray-600"
           }`}
         >
           <FontAwesomeIcon

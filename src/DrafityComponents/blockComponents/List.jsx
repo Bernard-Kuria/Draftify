@@ -12,7 +12,7 @@ export default function ListEditor({ block, onChange }) {
 
 export function ListOutput({ block }) {
   return (
-    <ul key={block.id} className="list-disc pl-5">
+    <ul key={block.id} className="list-disc pl-5 text-sm">
       {block.content.split(",").map((item, idx) => (
         <li key={idx}>{item}</li>
       ))}
