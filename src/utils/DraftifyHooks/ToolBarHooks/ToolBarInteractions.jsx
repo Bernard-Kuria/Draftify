@@ -5,14 +5,14 @@ export const handleDownloadJSON = (blocksData) => {
   const now = new Date();
   const timestamp = `${now.getFullYear()}-${
     now.getMonth() + 1
-  }-${now.getDate()}_${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}`;
+  }-${now.getDate()} [${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}]`;
 
   const blob = new Blob([dataStr], { type: "application/json" });
   const url = URL.createObjectURL(blob);
 
   const link = document.createElement("a");
   link.href = url;
-  link.download = `draftify-${timestamp}.json`; // Unique file name
+  link.download = `draftify ${timestamp}.json`; // Unique file name
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
