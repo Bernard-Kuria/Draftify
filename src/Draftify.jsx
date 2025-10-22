@@ -38,9 +38,9 @@ export default function Draftify() {
   useGenerateGrid(setGridDots);
 
   return (
-    <div className="box-border p-[10px] md:flex flex-col justify-center items-center min-h-full md:mt-[20px] overflow-hidden">
+    <div className="box-border p-[5px] md:p-[10px] flex flex-col justify-center items-center min-h-screen pt-[20px] overflow-hidden">
       <BackGround gridDots={gridDots} />
-      <div className="flex flex-col md:gap-[10px] gap-[20px] w-full md:w-[90%] min-h-[calc(100vh-100px)] h-fit md:border border-(--theme-color) rounded-2xl md:p-5 bg-white">
+      <div className="flex flex-col md:gap-[10px] gap-[20px] w-full md:w-[90%] min-h-[400px] h-fit border border-(--theme-color) rounded-2xl p-2 md:p-5 bg-white">
         <ToolBar view={view} setView={setView} blocksData={blocksData} />
 
         {view === "editor" && (
