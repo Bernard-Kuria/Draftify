@@ -89,7 +89,7 @@ export default function Draftify() {
 
         {view === "preview" && (
           <div
-            className="flex-1 grid gap-[10px] border border-(--theme-color) rounded-2xl p-3 md:p-5 bg-white"
+            className="grid gap-[10px] border border-(--theme-color) rounded-2xl p-3 md:p-5 bg-white"
             onSubmit={(e) => e.preventDefault()}
           >
             <OutputBlock blocksData={blocksData} />
