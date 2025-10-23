@@ -1,4 +1,5 @@
 import { HeadingOutput } from "./blockComponents/Heading";
+import { SubHeadingOutput } from "./blockComponents/SubHeading";
 import { ParagraphOutput } from "./blockComponents/Paragraph";
 import { QuoteOutput } from "./blockComponents/Quote";
 import { ListOutput } from "./blockComponents/List";
@@ -15,6 +16,8 @@ export default function OutputBlock({ blocksData }) {
       switch (b.type) {
         case "heading":
           return <HeadingOutput key={b.id} block={b} />;
+        case "subheading":
+          return <SubHeadingOutput key={b.id} block={b} />;
         case "paragraph":
           return <ParagraphOutput key={b.id} block={b} />;
         case "quote":

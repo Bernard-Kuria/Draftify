@@ -84,6 +84,15 @@ export async function exportBlocksToDocx(blocksData) {
         );
         break;
 
+      case "subheading":
+        sectionChildren.push(
+          new Paragraph({
+            text: block.content || "",
+            heading: HeadingLevel.HEADING_3,
+          })
+        );
+        break;
+
       case "paragraph":
         sectionChildren.push(new Paragraph(block.content || ""));
         break;
@@ -271,6 +280,8 @@ async function convertBlocksToHTML(blocksData) {
       switch (block.type) {
         case "heading":
           return `<h2>${block.content || ""}</h2>`;
+        case "subheading":
+          return `<h3>${block.content || ""}</h3>`;
         case "paragraph":
           return `<p>${block.content || ""}</p>`;
         case "quote":

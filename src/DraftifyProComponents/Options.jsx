@@ -6,14 +6,15 @@ import Tooltip from "./Tooltip";
 
 const blocks = [
   { id: 1, type: "heading", icon: ["fas", "heading"] },
-  { id: 2, type: "paragraph", icon: ["fas", "paragraph"] },
-  { id: 3, type: "quote", icon: ["fas", "quote-right"] },
-  { id: 4, type: "list", icon: ["fas", "list"] },
-  { id: 5, type: "table", icon: ["fas", "table-list"] },
-  { id: 6, type: "image", icon: ["far", "image"] },
-  { id: 7, type: "media", icon: ["fas", "play"] },
-  { id: 8, type: "link", icon: ["fas", "link"] },
-  { id: 9, type: "code", icon: ["fas", "code"] },
+  { id: 2, type: "subheading", icon: ["fas", "heading"] },
+  { id: 3, type: "paragraph", icon: ["fas", "paragraph"] },
+  { id: 4, type: "quote", icon: ["fas", "quote-right"] },
+  { id: 5, type: "list", icon: ["fas", "list"] },
+  { id: 6, type: "table", icon: ["fas", "table-list"] },
+  { id: 7, type: "image", icon: ["far", "image"] },
+  { id: 8, type: "media", icon: ["fas", "play"] },
+  { id: 9, type: "link", icon: ["fas", "link"] },
+  { id: 10, type: "code", icon: ["fas", "code"] },
 ];
 
 export default function Options({ handleClick }) {
@@ -29,13 +30,18 @@ export default function Options({ handleClick }) {
               activeId === block.id ? "text-(--theme-color)" : "text-gray-600"
             }`}
           >
-            <FontAwesomeIcon
-              icon={block.icon}
-              onClick={() => {
-                setActiveId(block.id);
-                handleClick({ id: block.id, type: block.type });
-              }}
-            />{" "}
+            <div className="flex">
+              <FontAwesomeIcon
+                icon={block.icon}
+                onClick={() => {
+                  setActiveId(block.id);
+                  handleClick({ id: block.id, type: block.type });
+                }}
+              />
+              <div className="text-xs">
+                {block.type === "subheading" ? "2" : ""}
+              </div>
+            </div>{" "}
             {block.type === "table" && (
               <RenderHoverTable handleClick={handleClick} block={block} />
             )}
