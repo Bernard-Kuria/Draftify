@@ -1,10 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
 import { newContentTable } from "./DraftifyHooks/tableHooks/tableInteractions";
+import { imageToBase64 } from "./DraftifyHooks/ToolBarHooks/ToolBarInteractions";
 
 export function useDraftify(initialBlocks = []) {
-  const [blocksData, setBlocksData] = useState(initialBlocks);
+  const [blocksData, setBlocksData] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("blocksData");
+      return saved ? JSON.parse(saved) : initialBlocks;
+    }
+    return initialBlocks; // server fallback
+  });
+
+  // Save to localStorage whenever blocksData changes
+  useEffect(() => {
+    const saveBlockData = async (blocks) => {
+      const blocksCopy = await Promise.all(
+        blocks.map(async (b) => {
+          if (b.type === "image" && b.file) {
+            const base64 = await imageToBase64(b);
+            return { ...b, content: base64, file: undefined };
+          }
+          return b;
+        })
+      );
+      localStorage.setItem("blocksData", JSON.stringify(blocksCopy));
+    };
+
+    saveBlockData(blocksData);
+  }, [blocksData]);
 
   const handleClick = (block, cells) => {
     let newTableContent;

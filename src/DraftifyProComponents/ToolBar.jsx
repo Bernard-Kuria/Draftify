@@ -1,11 +1,25 @@
-import { useRef } from "react";
-import { handleThemeBtnClick } from "../utils/DraftifyHooks/ToolBarHooks/ToggleEffects";
-import { handleDownloadJSON } from "../utils/DraftifyHooks/ToolBarHooks/ToolBarInteractions";
+import { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { handleThemeBtnClick } from "../utils/DraftifyHooks/ToolBarHooks/ToggleEffects";
+
+import {
+  handleDownloadJSON,
+  handleCopy,
+  exportBlocksToDocx,
+} from "../utils/DraftifyHooks/ToolBarHooks/ToolBarInteractions";
+
 export default function ToolBar({ view, setView, blocksData }) {
+  const [copy, setCopy] = useState(false);
   const themeModeBtn = useRef(null);
   const themeModeToggle = useRef(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCopy(false);
+    }, 3000);
+  }, [copy]);
+
   return (
     <div className="md:h-[40px]">
       <div className="relative grid md:flex items-center text-[12px] italic gap-[10px]">
@@ -17,11 +31,27 @@ export default function ToolBar({ view, setView, blocksData }) {
         </div>
         <div className="md:absolute right-0 flex items-center gap-[10px]">
           <button
-            className="border rounded-[10px] bg-(--theme-color) text-white hover:font-semibold hover:bg-(--hovered-theme-color) p-1 cursor-pointer"
+            className="border rounded-[10px] bg-(--hovered-theme-color) text-white hover:font-semibold hover:bg-(--theme-color) p-1 cursor-pointer"
             onClick={() => handleDownloadJSON(blocksData)}
           >
             Download JSON <FontAwesomeIcon icon={["fas", "download"]} />
           </button>
+          <button
+            className="border rounded-[10px] bg-(--hovered-theme-color) text-white hover:font-semibold hover:bg-(--theme-color) p-1 cursor-pointer"
+            onClick={() => exportBlocksToDocx(blocksData)}
+          >
+            Export .docx <FontAwesomeIcon icon={["fas", "download"]} />
+          </button>
+          <div
+            className={`p-1 cursor-pointer ${
+              copy ? "text-green-400" : "text-(--hovered-theme-color)"
+            }`}
+          >
+            <FontAwesomeIcon
+              icon={["fas", `${copy ? "check" : "copy"}`]}
+              onClick={() => handleCopy(blocksData, setCopy)}
+            />
+          </div>
           <div
             ref={themeModeBtn}
             className="border w-[30px] h-[16px] rounded-[16px] cursor-pointer duration-300 flex items-center p-[0px]"

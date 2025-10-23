@@ -15,6 +15,8 @@ import {
   faTrash,
   faDownload,
   faRefresh,
+  faCopy,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { faImage } from "@fortawesome/free-regular-svg-icons";
 
@@ -33,5 +35,7 @@ library.add(
   faArrowUpFromBracket,
   faTrash,
   faDownload,
-  faRefresh
+  faRefresh,
+  faCopy,
+  faCheck
 );
