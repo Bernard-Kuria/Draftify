@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { RenderHoverTable } from "./blockComponents/Table";
+import Tooltip from "./Tooltip";
 
 const blocks = [
   { id: 1, type: "heading", icon: ["fas", "heading"] },
@@ -20,23 +22,25 @@ export default function Options({ handleClick }) {
   return (
     <div className="flex flex-wrap gap-[5px] md:gap-[10px] items-center">
       {blocks.map((block) => (
-        <div
-          key={block.id}
-          className={`flex items-center gap-[10px] h-[40px] p-2 border-2 border-gray-600 cursor-pointer rounded-[10px] text-sm md:text-md ${
-            activeId === block.id ? "text-(--theme-color)" : "text-gray-600"
-          }`}
-        >
-          <FontAwesomeIcon
-            icon={block.icon}
-            onClick={() => {
-              setActiveId(block.id);
-              handleClick({ id: block.id, type: block.type });
-            }}
-          />{" "}
-          {block.type === "table" && (
-            <RenderHoverTable handleClick={handleClick} block={block} />
-          )}
-        </div>
+        <Tooltip text={`${block.type}`}>
+          <div
+            key={block.id}
+            className={`flex items-center gap-[10px] h-[40px] p-2 border-2 border-gray-600 cursor-pointer rounded-[10px] text-sm md:text-md ${
+              activeId === block.id ? "text-(--theme-color)" : "text-gray-600"
+            }`}
+          >
+            <FontAwesomeIcon
+              icon={block.icon}
+              onClick={() => {
+                setActiveId(block.id);
+                handleClick({ id: block.id, type: block.type });
+              }}
+            />{" "}
+            {block.type === "table" && (
+              <RenderHoverTable handleClick={handleClick} block={block} />
+            )}
+          </div>
+        </Tooltip>
       ))}
     </div>
   );
