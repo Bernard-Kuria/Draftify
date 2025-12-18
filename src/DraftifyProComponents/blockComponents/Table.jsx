@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { renderTable } from "../../utils/DraftifyHooks/tableHooks/tableEffects";
@@ -83,8 +83,14 @@ export function TableOutput({ block }) {
 
 export function RenderHoverTable({ handleClick, block }) {
   const [table, setTable] = useState(false);
+  const [row, setRow] = useState(0);
+  const [col, setCol] = useState(0);
   const [hoveredCell, setHoveredCell] = useState({ rows: 2, cols: 2 });
   const size = 10;
+
+  useEffect(() => {
+    setHoveredCell({ rows: row, cols: col });
+  }, [row, col]);
 
   return (
     <div className="relative">
@@ -93,7 +99,31 @@ export function RenderHoverTable({ handleClick, block }) {
         onClick={() => setTable((prev) => !prev)}
       />
       {table ? (
-        <div className="absolute -translate-x-[40px] translate-y-[10px] bg-white flex flex-col gap-1 w-40 h-43.5 border border-gray-600 rounded-[10px] cursor-pointer p-2">
+        <div className="absolute -translate-x-[40px] translate-y-[10px] bg-white flex flex-col gap-1 w-40 h-50 border border-gray-600 rounded-[10px] cursor-pointer p-2">
+          <div className="flex w-full gap-1">
+            <input
+              className="w-[40px] underline text-center border rounded-[5px]"
+              type="number"
+              value={row}
+              onChange={(e) => setRow(e.target.value)}
+            />
+            x
+            <input
+              className="w-[40px] underline text-center border rounded-[5px]"
+              type="number"
+              value={col}
+              onChange={(e) => setCol(e.target.value)}
+            />
+            <button
+              className="border rounded-[5px] leading-none px-1 border-(--draftify-theme-color) text-(--draftify-theme-color) cursor-pointer hover:bg-(--draftify-theme-color) hover:text-white"
+              onClick={() => {
+                setTable(false);
+                handleClick(block, hoveredCell);
+              }}
+            >
+              enter
+            </button>
+          </div>
           {[...Array(size)].map((_, rowIndex) => (
             <div key={rowIndex} className="flex gap-1">
               {[...Array(size)].map((_, colIndex) => (

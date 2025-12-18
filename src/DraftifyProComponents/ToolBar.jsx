@@ -33,7 +33,7 @@ export default function ToolBar({ view, setView, blocksData }) {
         <div className="md:absolute right-0 flex items-center gap-[10px]">
           <Tooltip text="e.g. for dev dummy data">
             <button
-              className="border rounded-[10px] bg-(--hovered-theme-color) text-white hover:font-semibold hover:bg-(--theme-color) p-1 cursor-pointer"
+              className="border rounded-[10px] bg-(--hovered-draftify-theme-color) text-white hover:font-semibold hover:bg-(--draftify-theme-color) p-1 cursor-pointer"
               onClick={() => handleDownloadJSON(blocksData)}
             >
               Download JSON <FontAwesomeIcon icon={["fas", "download"]} />
@@ -41,7 +41,7 @@ export default function ToolBar({ view, setView, blocksData }) {
           </Tooltip>
           <Tooltip text={`Download as document`}>
             <button
-              className="border rounded-[10px] bg-(--hovered-theme-color) text-white hover:font-semibold hover:bg-(--theme-color) p-1 cursor-pointer"
+              className="border rounded-[10px] bg-(--hovered-draftify-theme-color) text-white hover:font-semibold hover:bg-(--draftify-theme-color) p-1 cursor-pointer"
               onClick={() => exportBlocksToDocx(blocksData)}
             >
               Export .docx <FontAwesomeIcon icon={["fas", "download"]} />
@@ -50,7 +50,9 @@ export default function ToolBar({ view, setView, blocksData }) {
           <Tooltip text={`copy to clipboard`}>
             <button
               className={`p-1 cursor-pointer ${
-                copy ? "text-green-400" : "text-(--hovered-theme-color)"
+                copy
+                  ? "text-green-400"
+                  : "text-(--hovered-draftify-theme-color)"
               }`}
             >
               <FontAwesomeIcon

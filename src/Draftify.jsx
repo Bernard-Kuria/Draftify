@@ -40,20 +40,20 @@ export default function Draftify() {
   useGenerateGrid(setGridDots);
 
   return (
-    <div className="box-border p-[5px] md:p-[10px] flex flex-col justify-center items-center min-h-screen pt-[20px] overflow-hidden">
+    <>
       <BackGround gridDots={gridDots} />
-      <div className="flex flex-col md:gap-[10px] gap-[20px] w-full md:w-[90%] min-h-[450px] h-fit border border-(--theme-color) rounded-2xl p-2 md:p-5 bg-white">
+      <div className="flex flex-col md:gap-2.5 gap-5 w-full min-h-[450px] h-fit border border-(--draftify-theme-color) rounded-2xl p-2 md:p-5 bg-white">
         <ToolBar view={view} setView={setView} blocksData={blocksData} />
 
         {view === "editor" && (
           <>
             <Options handleClick={handleClick} />
             <div
-              className="flex-1 border border-(--theme-color) rounded-2xl md:p-5 p-[10px_0]"
+              className="flex-1 border border-(--draftify-theme-color) rounded-2xl md:p-5 p-[2.5_0]"
               onSubmit={(e) => e.preventDefault()}
             >
               <motion.div
-                className="grid gap-[10px]"
+                className="grid gap-2.5"
                 variants={containerVariants}
                 animate="show"
                 exit="hidden"
@@ -97,13 +97,13 @@ export default function Draftify() {
 
         {view === "preview" && (
           <div
-            className="grid gap-[10px] border border-(--theme-color) rounded-2xl p-3 md:p-5"
+            className="grid gap-2.5 border border-(--draftify-theme-color) rounded-2xl p-3 md:p-5"
             onSubmit={(e) => e.preventDefault()}
           >
             <OutputBlock blocksData={blocksData} />
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }

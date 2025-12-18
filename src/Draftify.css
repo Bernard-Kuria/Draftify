@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --theme-color: rgb(59, 130, 246);
-  --hovered-theme-color: rgb(30, 64, 175);
+  --draftify-theme-color: rgb(59, 130, 246);
+  --hovered-draftify-theme-color: rgb(30, 64, 175);
 }
 
 .logo-text {

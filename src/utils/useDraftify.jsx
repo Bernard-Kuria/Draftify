@@ -42,6 +42,7 @@ export function useDraftify(initialBlocks = []) {
         id: nanoid(),
         type: block.type,
         content: "",
+        url: "",
         tableContent: newTableContent || null,
         cells:
           block.type === "table" ? cells || { rows: 2, cols: 2 } : undefined,
@@ -49,9 +50,11 @@ export function useDraftify(initialBlocks = []) {
     ]);
   };
 
-  const handleChange = (id, newContent) => {
+  const handleChange = (id, newContent, url) => {
     setBlocksData((prev) =>
-      prev.map((b) => (b.id === id ? { ...b, content: newContent } : b))
+      prev.map((b) =>
+        b.id === id ? { ...b, content: newContent, url: url } : b
+      )
     );
   };
 
@@ -62,6 +65,15 @@ export function useDraftify(initialBlocks = []) {
   };
 
   const handleDelete = (id) => {
+    const block = blocksData.find((block) => block.id === id);
+
+    // ensure media block is deleted only if no media is uploaded
+    if (
+      (block.type === "image" || block.type === "video") &&
+      block.content !== ""
+    )
+      return;
+
     setBlocksData((prev) => prev.filter((b) => b.id !== id));
   };
 
