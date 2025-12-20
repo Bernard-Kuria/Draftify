@@ -26,13 +26,21 @@ export default function Options({ handleClick }) {
         <Tooltip text={`${block.type}`} key={block.id}>
           <div
             className={`flex items-center gap-[10px] h-[40px] p-2 border-2 border-gray-600 cursor-pointer rounded-[10px] text-sm md:text-md ${
-              activeId === block.id ? "text-(--theme-color)" : "text-gray-600"
+              activeId === block.id
+                ? "text-(--draftify-theme-color)"
+                : "text-gray-600"
             }`}
+            onClick={() => {
+              if (block.type === "table") return;
+              setActiveId(block.id);
+              handleClick({ id: block.id, type: block.type });
+            }}
           >
             <div className="flex">
               <FontAwesomeIcon
                 icon={block.icon}
                 onClick={() => {
+                  if (block.type !== "table") return;
                   setActiveId(block.id);
                   handleClick({ id: block.id, type: block.type });
                 }}

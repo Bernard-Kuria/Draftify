@@ -4,6 +4,7 @@ export default function SubHeadingEditor({ block, onChange }) {
       type="text"
       className="border-b subheading"
       placeholder="Sub Heading..."
+      autoFocus
       value={block.content}
       onChange={(e) => onChange(block.id, e.target.value)}
     />

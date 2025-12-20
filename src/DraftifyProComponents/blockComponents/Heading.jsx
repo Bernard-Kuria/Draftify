@@ -4,6 +4,7 @@ export default function HeadingEditor({ block, onChange }) {
       type="text"
       className="border-b heading"
       placeholder="Heading..."
+      autoFocus
       value={block.content}
       onChange={(e) => onChange(block.id, e.target.value)}
     />

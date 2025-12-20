@@ -6,14 +6,15 @@ export default function LinkEditor({ block, onChange }) {
 
   useEffect(() => {
     onChange(block.id, link, url);
-  }, [link, url]);
+  }, [link, url, block.id]);
 
   return (
     <div className="flex">
       <input
         type="text"
         placeholder="Enter link text..."
-        className="border-b link"
+        className="flex-1 border-b link"
+        autoFocus
         value={link}
         onChange={(e) => setLink(e.target.value)}
       />
@@ -21,7 +22,8 @@ export default function LinkEditor({ block, onChange }) {
       <input
         type="url"
         placeholder="url"
-        className="border-b link"
+        className="flex-1 border-b link"
+        autoFocus
         value={url}
         onChange={(e) => setUrl(e.target.value)}
       />

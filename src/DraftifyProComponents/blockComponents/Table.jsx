@@ -13,6 +13,7 @@ export default function TableEditor({ block, onTableChange }) {
               <input
                 type="text"
                 className="outline-none w-full"
+                autoFocus
                 value={cell.content}
                 onChange={(e) => {
                   const updatedHead = block.tableContent.head.map((h) =>

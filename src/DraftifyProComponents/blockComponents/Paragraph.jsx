@@ -3,6 +3,7 @@ export default function ParagraphEditor({ block, onChange }) {
     <textarea
       className="border-b paragraph"
       placeholder="Write something..."
+      autoFocus
       value={block.content}
       onChange={(e) => onChange(block.id, e.target.value)}
     />

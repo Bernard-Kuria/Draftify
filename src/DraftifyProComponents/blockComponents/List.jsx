@@ -4,6 +4,7 @@ export default function ListEditor({ block, onChange }) {
       type="text"
       className="border-b w-full list"
       placeholder="separate items using comma"
+      autoFocus
       value={block.content}
       onChange={(e) => onChange(block.id, e.target.value)}
     />

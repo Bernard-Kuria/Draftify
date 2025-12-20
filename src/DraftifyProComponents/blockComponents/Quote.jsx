@@ -4,6 +4,7 @@ export default function QuoteEditor({ block, onChange }) {
       type="text"
       className="border-b quote"
       placeholder="Quote..."
+      autoFocus
       value={block.content}
       onChange={(e) => onChange(block.id, e.target.value)}
     />
