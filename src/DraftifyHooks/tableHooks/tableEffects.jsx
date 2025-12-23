@@ -1,11 +1,11 @@
-export function renderTable(block, onTableChange) {
-  const { tableContent } = block;
+export function renderTable(block, setBlocksData) {
+  const { data } = block;
 
-  if (!tableContent?.body?.length) return null;
+  if (!data?.body?.length) return null;
 
   const cells = {
-    rows: tableContent.body.at(-1)?.id[0] ?? 0,
-    cols: tableContent.body.at(-1)?.id[1] ?? 0,
+    rows: data.body.at(-1)?.id[0] ?? 0,
+    cols: data.body.at(-1)?.id[1] ?? 0,
   };
 
   const rows = [];
@@ -20,20 +20,23 @@ export function renderTable(block, onTableChange) {
             className="outline-none w-full"
             placeholder={`Row ${i + 1}, Col ${j + 1}`}
             value={
-              tableContent.body.find(
-                (cell) => cell.id[0] === i && cell.id[1] === j
-              )?.content || ""
+              data.body.find((cell) => cell.id[0] === i && cell.id[1] === j)
+                ?.content || ""
             }
             onChange={(e) => {
-              const updatedBody = tableContent.body.map((cell) =>
+              const updatedBody = data.body.map((cell) =>
                 cell.id[0] === i && cell.id[1] === j
                   ? { ...cell, content: e.target.value }
                   : cell
               );
 
-              const updatedTable = { ...tableContent, body: updatedBody };
+              const updatedTable = { ...data, body: updatedBody };
 
-              onTableChange(block.id, updatedTable);
+              setBlocksData((prev) =>
+                prev.map((b) =>
+                  b.id === block.id ? { ...b, data: updatedTable } : b
+                )
+              );
             }}
           />
         </td>

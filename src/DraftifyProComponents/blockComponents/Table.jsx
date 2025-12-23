@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { renderTable } from "../../utils/DraftifyHooks/tableHooks/tableEffects";
+import { renderTable } from "../../DraftifyHooks/tableHooks/tableEffects";
 
-export default function TableEditor({ block, onTableChange }) {
+export default function TableEditor({ block, setBlocksData }) {
   return (
     <table className="mt-4">
       <thead>
         <tr>
-          {block.tableContent?.head?.map((cell, idx) => (
+          {block.data?.head?.map((cell, idx) => (
             <th key={idx} className="border p-2">
               <input
                 type="text"
@@ -16,21 +16,25 @@ export default function TableEditor({ block, onTableChange }) {
                 autoFocus
                 value={cell.content}
                 onChange={(e) => {
-                  const updatedHead = block.tableContent.head.map((h) =>
+                  const updatedHead = block.data.head.map((h) =>
                     h.id === cell.id ? { ...h, content: e.target.value } : h
                   );
                   const updatedTable = {
-                    ...block.tableContent,
+                    ...block.data,
                     head: updatedHead,
                   };
-                  onTableChange(block.id, updatedTable);
+                  setBlocksData((prev) =>
+                    prev.map((b) =>
+                      b.id === block.id ? { ...b, data: updatedTable } : b
+                    )
+                  );
                 }}
               />
             </th>
           ))}
         </tr>
       </thead>
-      <tbody>{renderTable(block, onTableChange)}</tbody>
+      <tbody>{renderTable(block, setBlocksData)}</tbody>
     </table>
   );
 }
@@ -82,7 +86,7 @@ export function TableOutput({ block }) {
   );
 }
 
-export function RenderHoverTable({ handleClick, block }) {
+export function RenderHoverTable({ handleClick }) {
   const [table, setTable] = useState(false);
   const [row, setRow] = useState(0);
   const [col, setCol] = useState(0);
@@ -90,8 +94,16 @@ export function RenderHoverTable({ handleClick, block }) {
   const size = 10;
 
   useEffect(() => {
+    if (row < 0) setRow(0);
+    if (col < 0) setCol(0);
+
     setHoveredCell({ rows: row, cols: col });
   }, [row, col]);
+
+  const renderTable = () => {
+    setTable(false);
+    handleClick("table", hoveredCell);
+  };
 
   return (
     <div className="relative">
@@ -117,10 +129,7 @@ export function RenderHoverTable({ handleClick, block }) {
             />
             <button
               className="border rounded-[5px] leading-none px-1 border-(--draftify-theme-color) text-(--draftify-theme-color) cursor-pointer hover:bg-(--draftify-theme-color) hover:text-white"
-              onClick={() => {
-                setTable(false);
-                handleClick(block, hoveredCell);
-              }}
+              onClick={renderTable}
             >
               enter
             </button>
@@ -135,14 +144,12 @@ export function RenderHoverTable({ handleClick, block }) {
                       ? "bg-blue-400"
                       : "bg-gray-200"
                   }`}
-                  onMouseEnter={() =>
-                    setHoveredCell({ rows: rowIndex, cols: colIndex })
-                  }
-                  onMouseLeave={() => setHoveredCell({ rows: 0, cols: 0 })}
-                  onClick={() => {
-                    setTable(false);
-                    handleClick(block, hoveredCell);
+                  onMouseEnter={() => {
+                    setRow(rowIndex);
+                    setCol(colIndex);
                   }}
+                  onMouseLeave={() => setHoveredCell({ rows: 0, cols: 0 })}
+                  onClick={renderTable}
                 ></div>
               ))}
             </div>

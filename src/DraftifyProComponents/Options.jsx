@@ -20,6 +20,11 @@ const blocks = [
 export default function Options({ handleClick }) {
   const [activeId, setActiveId] = useState(null);
 
+  const selectOption = (id, blockType) => {
+    setActiveId(id);
+    handleClick(blockType);
+  };
+
   return (
     <div className="flex flex-wrap gap-[5px] md:gap-[10px] items-center">
       {blocks.map((block) => (
@@ -30,25 +35,21 @@ export default function Options({ handleClick }) {
                 ? "text-(--draftify-theme-color)"
                 : "text-gray-600"
             }`}
-            onClick={() => {
-              if (block.type === "table") return;
-              setActiveId(block.id);
-              handleClick({ id: block.id, type: block.type });
-            }}
+            onClick={() =>
+              block.type !== "table" && selectOption(block.id, block.type)
+            }
           >
             <div className="flex">
               <FontAwesomeIcon
                 icon={block.icon}
-                onClick={() => {
-                  if (block.type !== "table") return;
-                  setActiveId(block.id);
-                  handleClick({ id: block.id, type: block.type });
-                }}
+                onClick={() =>
+                  block.type === "table" && selectOption(block.id, block.type)
+                }
               />
               <div className="text-xs">
                 {block.type === "subheading" ? "2" : ""}
               </div>
-            </div>{" "}
+            </div>
             {block.type === "table" && (
               <RenderHoverTable handleClick={handleClick} block={block} />
             )}

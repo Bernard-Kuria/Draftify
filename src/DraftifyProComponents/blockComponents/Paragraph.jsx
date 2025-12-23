@@ -4,7 +4,7 @@ export default function ParagraphEditor({ block, onChange }) {
       className="border-b paragraph"
       placeholder="Write something..."
       autoFocus
-      value={block.content}
+      value={block.data.text}
       onChange={(e) => onChange(block.id, e.target.value)}
     />
   );
@@ -13,7 +13,7 @@ export default function ParagraphEditor({ block, onChange }) {
 export function ParagraphOutput({ block }) {
   return (
     <p key={block.id} className="paragraph">
-      {block.content}
+      {block.data.text}
     </p>
   );
 }
