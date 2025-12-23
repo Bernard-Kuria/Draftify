@@ -1,8 +1,26 @@
 import { useState, useEffect } from "react";
-import { nanoid } from "nanoid";
 
-import { newContentTable } from "./DraftifyHooks/tableHooks/tableInteractions";
-import { imageToBase64 } from "./DraftifyHooks/ToolBarHooks/ToolBarInteractions";
+import { imageToBase64 } from "../DraftifyHooks/ToolBarHooks/ToolBarInteractions";
+
+import { createParagraphBlock } from "../draftify-core/createParagraphBlock";
+
+import { createHeadingBlock } from "../draftify-core/createHeadingBlock";
+
+import { createSubheadingBlock } from "../draftify-core/createSubheadingBlock";
+
+import { createQuoteBlock } from "../draftify-core/createQuoteBlock";
+
+import { createListBlock } from "../draftify-core/createListBlock";
+
+import { createTableBlock } from "../draftify-core/createTableBlock";
+
+import { createImageBlock } from "../draftify-core/createImageBlock";
+
+import { createVideoBlock } from "../draftify-core/createVideoBlock";
+
+import { createLinkBlock } from "../draftify-core/createLinkBlock";
+
+import { createCodeBlock } from "../draftify-core/createCodeBlock";
 
 export function useDraftify(initialBlocks = []) {
   const [blocksData, setBlocksData] = useState(() => {
@@ -31,36 +49,90 @@ export function useDraftify(initialBlocks = []) {
     saveBlockData(blocksData);
   }, [blocksData]);
 
-  const handleClick = (block, cells) => {
-    let newTableContent;
+  const handleClick = (type, cells) => {
+    switch (type) {
+      case "heading":
+        setBlocksData((prev) => [...prev, createHeadingBlock()]);
+        break;
+      case "subheading":
+        setBlocksData((prev) => [...prev, createSubheadingBlock()]);
+        break;
+      case "paragraph":
+        setBlocksData((prev) => [...prev, createParagraphBlock()]);
+        break;
+      case "quote":
+        setBlocksData((prev) => [...prev, createQuoteBlock()]);
+        break;
+      case "list":
+        setBlocksData((prev) => [...prev, createListBlock()]);
+        break;
+      case "table":
+        setBlocksData((prev) => [...prev, createTableBlock(cells)]);
+        break;
+      case "image":
+        setBlocksData((prev) => [...prev, createImageBlock()]);
+        break;
+      case "video":
+        setBlocksData((prev) => [...prev, createVideoBlock()]);
+        break;
+      case "link":
+        setBlocksData((prev) => [...prev, createLinkBlock()]);
+        break;
+      case "code":
+        setBlocksData((prev) => [...prev, createCodeBlock()]);
+        break;
 
-    if (block.type === "table") newTableContent = newContentTable(cells);
-
-    setBlocksData((prev) => [
-      ...prev,
-      {
-        id: nanoid(),
-        type: block.type,
-        content: "",
-        url: "",
-        tableContent: newTableContent || null,
-        cells:
-          block.type === "table" ? cells || { rows: 2, cols: 2 } : undefined,
-      },
-    ]);
+      default:
+        break;
+    }
   };
 
-  const handleChange = (id, newContent, url) => {
+  const handleChange = (
+    id,
+    newContent,
+    url,
+    level,
+    author,
+    style,
+    items,
+    newTable,
+    src,
+    alt,
+    caption,
+    provider,
+    text,
+    language,
+    code
+  ) => {
     setBlocksData((prev) =>
-      prev.map((b) =>
-        b.id === id ? { ...b, content: newContent, url: url } : b
-      )
-    );
-  };
-
-  const handleTableChange = (id, newTable) => {
-    setBlocksData((prev) =>
-      prev.map((b) => (b.id === id ? { ...b, tableContent: newTable } : b))
+      prev.map((b) => {
+        if (b.id === id) {
+          switch (b.type) {
+            case "heading":
+              return { ...b, data: { text: newContent, level: level } };
+            case "subheading":
+              return { ...b, data: { text: newContent } };
+            case "paragraph":
+              return { ...b, data: { text: newContent } };
+            case "quote":
+              return { ...b, data: { text: newContent, author: author } };
+            case "list":
+              return { ...b, data: { style: style, items: items } };
+            case "table":
+              return { ...b, data: newTable };
+            case "image":
+              return { ...b, data: { src: src, alt: alt, caption: caption } };
+            case "video":
+              return { ...b, data: { src: src, provider: provider } };
+            case "link":
+              return { ...b, data: { text: text, url: url } };
+            case "code":
+              return { ...b, data: { language: language, code: code } };
+            default:
+              break;
+          }
+        } else return b;
+      })
     );
   };
 
@@ -138,9 +210,9 @@ export function useDraftify(initialBlocks = []) {
 
   return {
     blocksData,
+    setBlocksData,
     handleClick,
     handleChange,
-    handleTableChange,
     handleDelete,
     handleReorder,
     onDropHandler,

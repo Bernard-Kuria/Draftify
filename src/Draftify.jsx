@@ -14,7 +14,7 @@ import "./utils/icons";
 import "./Draftify.css";
 
 import { useDraftify } from "./utils/useDraftify";
-import { useGenerateGrid } from "./utils/DraftifyHooks/BackgroundHooks/backGroundEffects";
+import { useGenerateGrid } from "./DraftifyHooks/BackgroundHooks/backGroundEffects";
 
 export default function Draftify() {
   const [view, setView] = useState("editor");
@@ -22,9 +22,9 @@ export default function Draftify() {
 
   const {
     blocksData,
+    setBlocksData,
     handleClick,
     handleChange,
-    handleTableChange,
     handleDelete,
     onDropHandler,
     onDragStart,
@@ -78,8 +78,8 @@ export default function Draftify() {
                       <Grabber />
                       <EditBlock
                         block={b}
+                        setBlocksData={setBlocksData}
                         onChange={handleChange}
-                        onTableChange={handleTableChange}
                       />
 
                       <FontAwesomeIcon

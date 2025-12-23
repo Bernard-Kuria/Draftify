@@ -8,7 +8,7 @@ import MediaEditor from "./blockComponents/Media.jsx";
 import LinkEditor from "./blockComponents/Link.jsx";
 import CodeEditor from "./blockComponents/Code.jsx";
 
-export default function EditBlock({ block, onChange, onTableChange }) {
+export default function EditBlock({ block, onChange, setBlocksData }) {
   switch (block.type) {
     case "heading":
       return <HeadingEditor block={block} onChange={onChange} />;
@@ -21,7 +21,7 @@ export default function EditBlock({ block, onChange, onTableChange }) {
     case "list":
       return <ListEditor block={block} onChange={onChange} />;
     case "table":
-      return <TableEditor block={block} onTableChange={onTableChange} />;
+      return <TableEditor block={block} setBlocksData={setBlocksData} />;
     case "image":
       return <MediaEditor block={block} onChange={onChange} />;
     case "media":

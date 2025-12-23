@@ -1,0 +1,149 @@
+/* ======================================================
+   Draftify Pro — Core Content Schema
+   Version: 1.0.0
+   Purpose: UI-agnostic block-based editor schema
+   ====================================================== */
+
+/* ---------- Meta ---------- */
+
+export type DraftifyVersion = "1.0.0";
+
+export interface DraftifyDocument {
+  version: DraftifyVersion;
+  metadata?: DraftifyMetadata;
+  blocks: DraftifyBlock[];
+}
+
+/* ---------- Metadata ---------- */
+
+export interface DraftifyMetadata {
+  title?: string;
+  description?: string;
+  author?: string;
+  createdAt?: string; // ISO string
+  updatedAt?: string; // ISO string
+  tags?: string[];
+}
+
+/* ---------- Block Base ---------- */
+
+export interface DraftifyBlockBase {
+  id: string; // UUID or nanoid
+  type: DraftifyBlockType;
+  createdAt?: string;
+}
+
+/* ---------- Block Types ---------- */
+
+export type DraftifyBlockType =
+  | "heading"
+  | "subheading"
+  | "paragraph"
+  | "list"
+  | "quote"
+  | "code"
+  | "link"
+  | "image"
+  | "video"
+  | "table";
+
+/* ---------- Individual Blocks ---------- */
+
+export interface HeadingBlock extends DraftifyBlockBase {
+  type: "heading";
+  data: {
+    text: string;
+    level: number;
+  };
+}
+
+export interface SubheadingBlock extends DraftifyBlockBase {
+  type: "subheading";
+  data: {
+    text: string;
+  };
+}
+
+export interface ParagraphBlock extends DraftifyBlockBase {
+  type: "paragraph";
+  data: {
+    text: string;
+  };
+}
+
+export interface ListBlock extends DraftifyBlockBase {
+  type: "list";
+  data: {
+    style: "ordered" | "unordered";
+    items: string[];
+  };
+}
+
+export interface QuoteBlock extends DraftifyBlockBase {
+  type: "quote";
+  data: {
+    text: string;
+    author?: string;
+  };
+}
+
+export interface CodeBlock extends DraftifyBlockBase {
+  type: "code";
+  data: {
+    language?: string;
+    code: string;
+  };
+}
+
+export interface LinkBlock extends DraftifyBlockBase {
+  type: "link";
+  data: {
+    text: string;
+    url: string;
+  };
+}
+
+export interface ImageBlock extends DraftifyBlockBase {
+  type: "image";
+  data: {
+    src: string;
+    alt?: string;
+    caption?: string;
+  };
+}
+
+export interface VideoBlock extends DraftifyBlockBase {
+  type: "video";
+  data: {
+    src: string;
+    provider?: "youtube" | "vimeo" | "custom";
+  };
+}
+
+export interface TableBlock extends DraftifyBlockBase {
+  type: "table";
+  data: {
+    head: {
+      id: number;
+      content: string;
+    }[];
+    body: {
+      id: number[];
+      content: string;
+    }[];
+  };
+}
+
+/* ---------- Union ---------- */
+
+export type DraftifyBlock =
+  | HeadingBlock
+  | SubheadingBlock
+  | ParagraphBlock
+  | ListBlock
+  | QuoteBlock
+  | CodeBlock
+  | LinkBlock
+  | ImageBlock
+  | VideoBlock
+  | TableBlock;

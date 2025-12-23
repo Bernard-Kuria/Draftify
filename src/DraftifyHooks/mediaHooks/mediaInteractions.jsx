@@ -1,5 +1,5 @@
 import imageCompression from "browser-image-compression";
-import { mediaType } from "../../conversions";
+import { mediaType } from "../../utils/conversions";
 
 // Shared compression function
 async function compressImageIfNeeded(

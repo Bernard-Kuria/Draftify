@@ -6,7 +6,7 @@ import {
   dragHandler,
   dragLeaveHandler,
   onFileChange,
-} from "../../utils/DraftifyHooks/mediaHooks/mediaInteractions";
+} from "../../DraftifyHooks/mediaHooks/mediaInteractions";
 
 import ProgressDonut from "../Loader";
 
