@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --draftify-theme-color: rgb(59, 130, 246);
+  --hovered-draftify-theme-color: rgb(30, 64, 175);
+}
+
+.draftify-container {
+  @apply flex flex-col md:gap-2.5 gap-5 w-full min-h-[450px] h-fit border border-(--draftify-theme-color) rounded-2xl p-2 md:p-5 bg-white;
+}
+
+.editor-area {
+  @apply flex-1 border border-(--draftify-theme-color) rounded-2xl md:p-5 p-[2.5_0];
+}
+
+.output-area {
+  @apply grid gap-2.5 border border-(--draftify-theme-color) rounded-2xl p-3 md:p-5;
+}
+
+.block-container {
+  @apply flex items-center gap-[5px] rounded-md p-[5px] transition-colors;
+}
+
+.logo-text {
+  @apply bg-gradient-to-br from-blue-800 to-purple-500 bg-clip-text text-transparent;
+}
+
+.heading {
+  @apply w-full outline-none text-2xl font-semibold;
+}
+
+.subheading {
+  @apply w-full outline-none text-[20px] font-semibold;
+}
+
+.paragraph {
+  @apply w-full h-fit outline-none;
+}
+
+.quote {
+  @apply w-full border-l-4 outline-none text-[18px] italic pl-2;
+}
+
+.list {
+  @apply outline-none text-sm;
+}
+
+.link {
+  @apply text-(--hovered-theme-color) w-full outline-none text-sm;
+}
+
+.code {
+  @apply font-mono bg-black text-white p-2 w-full whitespace-pre-wrap;
+}
+
+.media {
+  @apply object-cover w-full h-full;
+}
