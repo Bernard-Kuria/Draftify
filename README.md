@@ -10,6 +10,7 @@ Draftify is designed for flexibility, scalability, and integration with React or
 ---
 
 ## Quick Start
+[![npm](https://img.shields.io/npm/v/draftify-react)](https://www.npmjs.com/package/draftify-react)
 
 ```ts
 import Draftify from "draftify";
