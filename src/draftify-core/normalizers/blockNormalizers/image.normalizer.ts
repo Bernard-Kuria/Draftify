@@ -5,12 +5,12 @@ export function normalizeImageBlock(block: ImageBlock): ImageBlock {
     ...block,
     type: "image",
     data: {
-      src: typeof block.data?.src === "string" ? block.data.src.trim() : "",
+      src: typeof block.data?.src === "string" ? block.data.src : "",
       alt:
-        typeof block.data?.alt === "string" ? block.data.alt.trim() : undefined,
+        typeof block.data?.alt === "string" ? block.data.alt : undefined,
       caption:
         typeof block.data?.caption === "string"
-          ? block.data.caption.trim()
+          ? block.data.caption
           : undefined,
     },
   };

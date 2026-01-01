@@ -5,7 +5,7 @@ export function normalizeParagraphBlock(block: ParagraphBlock): ParagraphBlock {
     ...block,
     type: "paragraph",
     data: {
-      text: typeof block.data?.text === "string" ? block.data.text.trim() : "",
+      text: typeof block.data?.text === "string" ? block.data.text : "",
     },
   };
 }

@@ -7,7 +7,7 @@ export function normalizeSubheadingBlock(
     ...block,
     type: "subheading",
     data: {
-      text: typeof block.data?.text === "string" ? block.data.text.trim() : "",
+      text: typeof block.data?.text === "string" ? block.data.text : "",
     },
   };
 }

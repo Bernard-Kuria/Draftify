@@ -7,9 +7,9 @@ export function normalizeLinkBlock(block: LinkBlock): LinkBlock {
     data: {
       linkText:
         typeof block.data?.linkText === "string"
-          ? block.data.linkText.trim()
+          ? block.data.linkText
           : "",
-      url: typeof block.data?.url === "string" ? block.data.url.trim() : "",
+      url: typeof block.data?.url === "string" ? block.data.url : "",
     },
   };
 }

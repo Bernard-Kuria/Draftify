@@ -1,6 +1,6 @@
 {
-  "name": "@bernard-kuria/draftify",
-  "version": "0.1.1",
+  "name": "draftify",
+  "version": "0.1.2",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,8 +20,8 @@
     "@types/react-dom": "^19.2.3",
     "typescript": "^5.9.3"
   },
-  "repository": "https://github.com/Bernard-Kuria/draftify-react.git",
+  "repository": "https://github.com/Bernard-Kuria/draftify.git",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org/"
   }
 }

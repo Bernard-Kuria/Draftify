@@ -5,10 +5,10 @@ export function normalizeQuoteBlock(block: QuoteBlock): QuoteBlock {
     ...block,
     type: "quote",
     data: {
-      text: typeof block.data?.text === "string" ? block.data.text.trim() : "",
+      text: typeof block.data?.text === "string" ? block.data.text : "",
       author:
         typeof block.data?.author === "string"
-          ? block.data.author.trim()
+          ? block.data.author
           : undefined,
     },
   };

@@ -7,7 +7,7 @@ export function normalizeCodeBlock(block: CodeBlock): CodeBlock {
     data: {
       language:
         typeof block.data?.language === "string"
-          ? block.data.language.trim()
+          ? block.data.language
           : undefined,
       code: typeof block.data?.code === "string" ? block.data.code : "",
     },

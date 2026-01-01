@@ -5,7 +5,7 @@ export function normalizeHeadingBlock(block: HeadingBlock): HeadingBlock {
     ...block,
     type: "heading",
     data: {
-      text: typeof block.data?.text === "string" ? block.data.text.trim() : "",
+      text: typeof block.data?.text === "string" ? block.data.text : "",
       level:
         typeof block.data?.level === "number" &&
         block.data.level >= 1 &&

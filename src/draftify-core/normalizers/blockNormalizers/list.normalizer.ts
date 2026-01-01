@@ -9,7 +9,7 @@ export function normalizeListBlock(block: ListBlock): ListBlock {
       items: Array.isArray(block.data?.items)
         ? block.data.items
             .filter((item): item is string => typeof item === "string")
-            .map((item) => item.trim())
+            .map((item) => item)
         : [],
     },
   };
