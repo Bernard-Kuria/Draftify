@@ -1,3 +1,4 @@
+[![npm](https://img.shields.io/npm/v/draftify)](https://www.npmjs.com/package/draftify)
 # Draftify
 
 Draftify is a lightweight, modular TypeScript library for creating, modifying, validating, normalizing, and exporting structured documents in the browser or Node.js. It consists of two main layers:
