@@ -34,7 +34,10 @@ import {
   VideoBlock,
   LinkBlock,
   CodeBlock,
+  CustomBlock,
 } from "../schema/draftify.schema";
+import { validateCustomBlock } from "../validators/blockValidators/custom.validator";
+import { normalizeCustomBlock } from "../normalizers/blockNormalizers/custom.normalizer";
 
 export type BlockTypeMap = {
   heading: HeadingBlock;
@@ -47,6 +50,9 @@ export type BlockTypeMap = {
   video: VideoBlock;
   link: LinkBlock;
   code: CodeBlock;
+  "custom-1": CustomBlock;
+  "custom-2": CustomBlock;
+  "custom-3": CustomBlock;
 };
 
 export type BlockValidator = (block: DraftifyBlock) => ValidationResult;
@@ -99,5 +105,17 @@ export const blockRegistry: {
   code: {
     validator: validateCodeBlock,
     normalizer: normalizeCodeBlock,
+  },
+  "custom-1": {
+    validator: validateCustomBlock,
+    normalizer: normalizeCustomBlock,
+  },
+  "custom-2": {
+    validator: validateCustomBlock,
+    normalizer: normalizeCustomBlock,
+  },
+  "custom-3": {
+    validator: validateCustomBlock,
+    normalizer: normalizeCustomBlock,
   },
 };

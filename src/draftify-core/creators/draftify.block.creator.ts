@@ -15,13 +15,15 @@ import {
   QuoteBlock,
   TableBlock,
   VideoBlock,
+  CustomBlock,
 } from "../schema/draftify.schema";
 
 import { DraftifyBlock } from "../schema/draftify.schema";
 
 function createBlock<T extends DraftifyBlock>(
   type: T["type"],
-  data: T["data"]
+  data: T["data"],
+  iconText?: string
 ): T {
   return {
     id: crypto.randomUUID(),
@@ -31,8 +33,10 @@ function createBlock<T extends DraftifyBlock>(
   } as T;
 }
 
-export function createHeadingBlock(level: HeadingBlock["data"]["level"] = 1): HeadingBlock {
-  return createBlock<HeadingBlock>("heading", { text: "", level});
+export function createHeadingBlock(
+  level: HeadingBlock["data"]["level"] = 1
+): HeadingBlock {
+  return createBlock<HeadingBlock>("heading", { text: "", level });
 }
 
 export function createSubheadingBlock(): SubheadingBlock {
@@ -96,4 +100,11 @@ export function createLinkBlock(): LinkBlock {
 
 export function createCodeBlock(): CodeBlock {
   return createBlock<CodeBlock>("code", { language: "", code: "" });
+}
+
+export function createCustomBlock(
+  type: "custom-1" | "custom-2" | "custom-3",
+  data: any
+): CustomBlock {
+  return createBlock<CustomBlock>(type, data);
 }

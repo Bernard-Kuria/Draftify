@@ -43,7 +43,10 @@ export type DraftifyBlockType =
   | "link"
   | "image"
   | "video"
-  | "table";
+  | "table"
+  | "custom-1"
+  | "custom-2"
+  | "custom-3";
 
 /* ---------- Individual Blocks ---------- */
 
@@ -132,6 +135,11 @@ export interface TableBlock extends DraftifyBlockBase {
   };
 }
 
+export interface CustomBlock extends DraftifyBlockBase {
+  type: "custom-1" | "custom-2" | "custom-3";
+  data: any;
+}
+
 /* ---------- Union ---------- */
 
 export type DraftifyBlock =
@@ -144,4 +152,5 @@ export type DraftifyBlock =
   | LinkBlock
   | ImageBlock
   | VideoBlock
-  | TableBlock;
+  | TableBlock
+  | CustomBlock;

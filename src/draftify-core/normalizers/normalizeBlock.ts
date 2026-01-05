@@ -10,6 +10,7 @@ import {
   VideoBlock,
   LinkBlock,
   CodeBlock,
+  CustomBlock,
 } from "../schema/draftify.schema";
 
 import { blockRegistry } from "../registry/blockRegistry";
@@ -36,6 +37,12 @@ export function normalizeBlock(block: DraftifyBlock): DraftifyBlock {
       return blockRegistry.link.normalizer(block as LinkBlock);
     case "code":
       return blockRegistry.code.normalizer(block as CodeBlock);
+    case "custom-1":
+      return blockRegistry["custom-1"].normalizer(block as CustomBlock);
+    case "custom-2":
+      return blockRegistry["custom-2"].normalizer(block as CustomBlock);
+    case "custom-3":
+      return blockRegistry["custom-3"].normalizer(block as CustomBlock);
     default:
       return block;
   }

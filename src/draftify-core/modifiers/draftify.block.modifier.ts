@@ -183,3 +183,26 @@ export function modifyCodeBlock(
     return block;
   });
 }
+
+/* ---------- Custom Modifier ---------- */
+export function modifyCustomBlock(
+  blocks: DraftifyBlock[],
+  customId: string,
+  data: Object
+): DraftifyBlock[] {
+  return blocks.map((block) => {
+    if (
+      block.id === customId &&
+      (block.type === "custom-1" ||
+        block.type === "custom-2" ||
+        block.type === "custom-3")
+    ) {
+      const updatedBlock = {
+        ...block,
+        data: data,
+      };
+      return normalizeBlock(updatedBlock);
+    }
+    return block;
+  });
+}

@@ -10,6 +10,7 @@ import {
   VideoBlock,
   LinkBlock,
   CodeBlock,
+  CustomBlock,
 } from "../schema/draftify.schema";
 
 import { blockRegistry } from "../registry/blockRegistry";
@@ -37,6 +38,12 @@ export function validateBlock(block: DraftifyBlock): ValidationResult {
       return blockRegistry.link.validator(block as LinkBlock);
     case "code":
       return blockRegistry.code.validator(block as CodeBlock);
+    case "custom-1":
+      return blockRegistry["custom-1"].validator(block as CustomBlock);
+    case "custom-2":
+      return blockRegistry["custom-2"].validator(block as CustomBlock);
+    case "custom-3":
+      return blockRegistry["custom-3"].validator(block as CustomBlock);
     default:
       return block;
   }
