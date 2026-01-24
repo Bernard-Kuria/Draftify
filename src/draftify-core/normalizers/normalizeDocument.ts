@@ -17,7 +17,7 @@ export function normalizeDocument(doc: DraftifyDocument): DraftifyDocument {
 
   return {
     ...doc,
-    blocks: normalizedBlocks,
+    version: doc.version || "1.0.0",
     metadata: {
       docTitle: doc.metadata?.docTitle || "Untitled Document",
       description: doc.metadata?.description || "",
@@ -25,5 +25,6 @@ export function normalizeDocument(doc: DraftifyDocument): DraftifyDocument {
       createdAt: doc.metadata?.createdAt || new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     },
+    blocks: normalizedBlocks,
   };
 }
